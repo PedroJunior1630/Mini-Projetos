@@ -47,6 +47,7 @@ for c in range(0,qntd):
     cabecalho(f"{c+1}° PRODUTO")
     produto["nome"] = str(input(f'Nome do {c+1}° ingrediente: '))
     produto["preço"] = moeda(f'Preço do {produto["nome"]} R$')
+    produto["quantidade"] = leiaInt('Quantidade: ')
     produtos.append(produto.copy())
     produto.clear()
 linha()
