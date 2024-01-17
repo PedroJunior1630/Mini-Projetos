@@ -1,6 +1,6 @@
 produtos = []
 produto = {}
-
+total = 0
 def tempo():
     from time import sleep
     sleep(1.5)
@@ -42,7 +42,7 @@ def moeda(coin):
 
 cabecalho("PRODUTO")
 produtonome = str(input('Qual nome do produto? '))
-fabrica = leiaInt(f'Quantos {produtonome} pretende fabricar?')
+fabrica = leiaInt(f'Quantos {produtonome}(s) pretende fabricar?')
 qntd = leiaInt('Quantos ingredientes são necessários? ')
 linha()
 tempo()
@@ -56,5 +56,15 @@ for c in range(0,qntd):
     produto.clear()
 linha()
 tempo()
+#gasto total
+#tabela
+cabecalho(f"{produtonome}") 
+for valor in produtos:
+    if valor["quantidade"] > 1:
+        preco = valor["quantidade"] * valor["preço"]
+    total += preco
+    print(f'{valor["nome"]:.<30}R${preco:>5}')
+print(f'{"Total:":.<30} R${str(total):>5}')
+#custo por produto
 
-print(produtos)
+
