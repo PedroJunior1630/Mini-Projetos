@@ -1,6 +1,7 @@
 produtos = []
 produto = {}
 total = 0
+
 def tempo(d=0.8):
     from time import sleep
     sleep(d)
@@ -64,7 +65,10 @@ for valor in produtos:
     print(f'{valor["nome"]:.<30}R${preco:>5.2f}')
     tempo(0.5)
 print(f'{"Total:":.<30} R${total:>5.2f}')
-#custo por produto
+custopp = total/fabrica
 cabecalho("CUSTO POR PRODUTO")
-print(f"R${total/fabrica:.2f}")
-
+print(f"R${custopp:.2f}")
+for c in range(10,151,10):
+    print(f'{c} % de lucro, você vende por R${custopp + (custopp * c / 100):.2f} cada {produtonome}.')
+    tempo(0.2)
+linha()
