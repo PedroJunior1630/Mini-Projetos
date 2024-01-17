@@ -5,6 +5,7 @@ def tempo():
     from time import sleep
     sleep(1.5)
 
+
 def leiaInt(msg):
     while True:
         try:
@@ -18,11 +19,13 @@ def leiaInt(msg):
 def linha(tam=20):
     print("=+=" * tam)
 
+
 def cabecalho(msg):
     linha()
     print(msg.center(60))
     linha()
     tempo()
+
 
 def moeda(coin):
     while True:
@@ -35,6 +38,7 @@ def moeda(coin):
                 print("\033[31mERRO! DIGITE UM VALOR VÁLIDO!\033[m")
             else:
                 return float(t)
+
 
 cabecalho("PRODUTO")
 produtonome = str(input('Qual nome do produto? '))
