@@ -14,6 +14,7 @@ def leiaInt(msg):
         else:
             return votando
 
+        
 
 def linha(tam=15,):
     print("=+=" * tam)
@@ -63,8 +64,14 @@ if ficha == "VOTO OBRIGATÓRIO":
     print(f"{'VOTO':.<20}{str(candidatos)}")
     linha()
 if ficha == "VOTO OPCIONAL":
-    opcao = str(input('Deseja votar?[S/N]: ')).strip().upper()
-    if "Nn" in opcao:
-        
+    opc = leiaStr('Deseja votar?[S/N]: ')
+    if "Ss" in opc:
+        candidatos = votaCandidato()
+        cabecalho("FICHA DE VOTAÇÃO")
+        tempo()
+        print(f"{'NOME':.<20}{nome}")
+        print(f"{'IDADE':.<20}{str(idade)} anos")
+        print(f"{'VOTO':.<20}{str(candidatos)}")
+        linha()
 tempo()
 cabecalho("PROGRAMA FINALIZADO...")
