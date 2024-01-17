@@ -1,9 +1,9 @@
 produtos = []
 produto = {}
 total = 0
-def tempo():
+def tempo(d=0.8):
     from time import sleep
-    sleep(1.5)
+    sleep(d)
 
 
 def leiaInt(msg):
@@ -56,15 +56,15 @@ for c in range(0,qntd):
     produto.clear()
 linha()
 tempo()
-#gasto total
-#tabela
+
 cabecalho(f"{produtonome}") 
 for valor in produtos:
-    if valor["quantidade"] > 1:
-        preco = valor["quantidade"] * valor["preço"]
+    preco = valor["quantidade"] * valor["preço"]
     total += preco
-    print(f'{valor["nome"]:.<30}R${preco:>5}')
-print(f'{"Total:":.<30} R${str(total):>5}')
+    print(f'{valor["nome"]:.<30}R${preco:>5.2f}')
+    tempo(0.5)
+print(f'{"Total:":.<30} R${total:>5.2f}')
 #custo por produto
-
+cabecalho("CUSTO POR PRODUTO")
+print(f"R${total/fabrica:.2f}")
 
