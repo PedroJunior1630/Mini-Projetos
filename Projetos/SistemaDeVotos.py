@@ -64,8 +64,8 @@ if ficha == "VOTO OBRIGATÓRIO":
     print(f"{'VOTO':.<20}{str(candidatos)}")
     linha()
 if ficha == "VOTO OPCIONAL":
-    opc = leiaStr('Deseja votar?[S/N]: ')
-    if "Ss" in opc:
+    opc = str(input('Deseja votar?[S/N]: ')).strip().upper()
+    if opc[0] == "S":
         candidatos = votaCandidato()
         cabecalho("FICHA DE VOTAÇÃO")
         tempo()
