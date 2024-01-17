@@ -37,7 +37,8 @@ def moeda(coin):
                 return float(t)
 
 cabecalho("PRODUTO")
-produtonome = str(input("Qual nome do produto? "))
+produtonome = str(input('Qual nome do produto? '))
+fabrica = leiaInt(f'Quantos {produtonome} pretende fabricar?')
 qntd = leiaInt('Quantos ingredientes são necessários? ')
 linha()
 tempo()
