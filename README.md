@@ -5,5 +5,8 @@
  1. Conversor de moedas
  2. Conversor de temperaturas
  3. Registro de sáude
+ 4. Imposto de renda
+ 5. Calculadora de Vendas
+ 6. Calculos de Energia(Lei de Ohm)
  ----
  - [x] Todos os projetos foram feitos em python.
