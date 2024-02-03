@@ -8,5 +8,7 @@
  4. Imposto de renda
  5. Calculadora de Vendas
  6. Calculos de Energia(Lei de Ohm)
+ 7. Sistema De Votação
+ 8. Trigonometria(Hipotenusa)
  ----
  - [x] Todos os projetos foram feitos em python.
