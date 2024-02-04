@@ -1,5 +1,10 @@
 AZUL = "\033[1;36m"
 
+def limpaTela():
+    import os
+    os.system('cls' if os.name == "nt" else "clear")
+
+
 def tempo(seg):
     from time import sleep
     sleep(seg)
@@ -9,6 +14,7 @@ def linha(tam=20):
     print(AZUL)
     print("=+=" * tam)
     print("\033[m")
+
 
 def cabecalho(msg):
     print("\033[1;33m")
@@ -34,12 +40,15 @@ def leiaInt(inp):
 def layout(*item):
     cabecalho("QUE TIPO DE GRANDEZA DESEJA DESCOBRIR?")
     print("\033[1;16m")
+
     for num, grandeza in enumerate(item):
         print(f"[ {num+1} ] - {grandeza:<15}")
-    print(f"[ 0 ] - Para finalizar.")
+    print(f"[ 0 ] - Para finalizar o programa.")
     print("\033[m")
+
     opc = leiaInt('\033[1;97mQual opção Deseja?\033[m')
     return opc
+
 
 def pergunta(tipo):
     v = int(input(f"\033[1;33mQuantos {tipo}? \033[m"))
@@ -59,9 +68,10 @@ def grandeza(msg,tipo=""):
         valores = [input("Amperagem?[S/N]").upper(),input("Volts?[S/N]").upper(),input("Potência?[S/N]").upper()]
     elif tipo == "potencia":
         valores = [input("Amperagem?[S/N]").upper(),input("Resistência?[S/N]").upper(),input("Volts?[S/N]").upper()]
-
     print("\033[m")
+
     return valores
+
 
 def formula(*valores):
     linha()
@@ -69,10 +79,12 @@ def formula(*valores):
     tempo(0.5)
     print(f"{valores[0]} = {valores[-2]} {valores[2]} {valores[-1]}")
     tempo(0.5)
+
     if valores[2] == "/":
         print(f"{valores[0]} = {valores[-2] / valores[-1]:.2f}")
     elif valores[2] == "x":
         print(f"{valores[0]} = {valores[-2] * valores[-1]:.2f}")
+
     linha()
 
 
@@ -126,6 +138,7 @@ def conversao(tipo):
             tempo(0.5)
             print(f"V = {(po/re)**(1/2):.2f}")
             linha()
+
     elif tipo == 3:
         valor = grandeza("RESISTÊNCIA(OHMS)","resistencia")
         if valor[0] == "S" and valor[1] == "S":
@@ -156,6 +169,7 @@ def conversao(tipo):
             tempo(0.5)
             print(f"R = {vo/po:.2f}")
             linha()
+
     elif tipo == 4:
         valor = grandeza("POTÊNCIA ELÉTRICA(WATTS)","potencia")
         if valor[0] == "S" and valor[1] == "S":
@@ -186,12 +200,17 @@ def conversao(tipo):
             tempo(0.5)
             print(f"P = {vo**2 / re}")
             linha()
-cabecalho("CONVERSÃO DE GRANDEZAS ELÉTRICAS")
-tempo(1)
-interface = layout("Tensão[Volts]", "Corrente[Amperes]","Resistência[Ohms]","Potência[Watts]")
-if interface == 0:
-    print("\033[1;97m...")
+
+
+while True:
+    cabecalho("CONVERSÃO DE GRANDEZAS ELÉTRICAS")
     tempo(1)
-    cabecalho(" Programa Finalizado.")
-else:
-    conversao(interface)
+    interface = layout("Tensão[Volts]", "Corrente[Amperes]","Resistência[Ohms]","Potência[Watts]")
+    limpaTela()
+    if interface == 0:
+        print("\033[1;97m...")
+        tempo(1)
+        cabecalho(" Programa Finalizado.")
+        break
+    else:
+        conversao(interface)
