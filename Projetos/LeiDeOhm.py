@@ -136,7 +136,7 @@ def conversao(tipo):
             am = pergunta("Amperes")
             po = pergunta("Watts")
             linha()
-            print("R = P / I²")
+            print("R = P / A²")
             tempo(0.5)
             print(f"R = {po} / {am}²")
             tempo(0.5)
@@ -157,9 +157,35 @@ def conversao(tipo):
             print(f"R = {vo/po:.2f}")
             linha()
     elif tipo == 4:
-        pass
-
-
+        valor = grandeza("POTÊNCIA ELÉTRICA(WATTS)","potencia")
+        if valor[0] == "S" and valor[1] == "S":
+            am = pergunta("Amperes")
+            re = pergunta("Ohms")
+            linha()
+            print("P = R x A²")
+            tempo(0.5)
+            print(f"P = {re} x {am}²")
+            tempo(0.5)
+            print(f"P = {re} x {am**2}")
+            tempo(0.5)
+            print(f"P = {re*am}")
+            linha()
+        if valor[0] == "S" and valor[2] == "S":
+            vo = pergunta("Volts")
+            am = pergunta("Amperes")
+            formula("P","V","x","A",vo,am)
+        if valor[1] == "S" and valor[2] == "S":
+            vo = pergunta("Volts")
+            re = pergunta("Ohms")
+            linha()
+            print("P = V² / R")
+            tempo(0.5)
+            print(f"P = {vo}² / {re}")
+            tempo(0.5)
+            print(f"P = {vo**2} / {re}")
+            tempo(0.5)
+            print(f"P = {vo**2 / re}")
+            linha()
 cabecalho("CONVERSÃO DE GRANDEZAS ELÉTRICAS")
 tempo(1)
 interface = layout("Tensão[Volts]", "Corrente[Amperes]","Resistência[Ohms]","Potência[Watts]")
