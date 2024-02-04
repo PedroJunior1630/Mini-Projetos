@@ -46,11 +46,20 @@ def pergunta(tipo):
     return v
 
 
-def grandeza(msg):
+def grandeza(msg,tipo=""):
     cabecalho(msg)
     print("QUAIS VALORES VOCÊ POSSUI?")
     print("\033[1;34m")
-    valores = [input("Amperagem?[S/N]").upper(),input("Resistência?[S/N]").upper(),input("Potência?[S/N]").upper()]
+
+    if tipo == "volts":
+        valores = [input("Amperagem?[S/N]").upper(),input("Resistência?[S/N]").upper(),input("Potência?[S/N]").upper()]
+    elif tipo == "amperes":
+        valores = [input("Volts?[S/N]").upper(),input("Resistência?[S/N]").upper(),input("Potência?[S/N]").upper()]
+    elif tipo == "resistencia":
+        valores = [input("Amperagem?[S/N]").upper(),input("Volts?[S/N]").upper(),input("Potência?[S/N]").upper()]
+    elif tipo == "potencia":
+        valores = [input("Amperagem?[S/N]").upper(),input("Resistência?[S/N]").upper(),input("Volts?[S/N]").upper()]
+
     print("\033[m")
     return valores
 
@@ -69,7 +78,7 @@ def formula(*valores):
 
 def conversao(tipo):
     if tipo == 1:
-        valor = grandeza("TENSÃO ELÉTRICA(VOLTS)")
+        valor = grandeza("TENSÃO ELÉTRICA(VOLTS)","volts")
         linha()
         if valor[0] == "S" and valor[2] == "S":
             wa = pergunta("Watts")
@@ -85,7 +94,7 @@ def conversao(tipo):
             re = pergunta("Ohms")
             po = pergunta("Watts")
             linha()
-            print("V = P / A")
+            print("V = √P x A")
             tempo(0.5)
             print(f"V = √{po} x {re}")
             tempo(0.5)
@@ -95,14 +104,30 @@ def conversao(tipo):
             linha()
 
     elif tipo == 2:
-        valor = grandeza("CORRENTE ELÉTRICA(AMPERES)")
+        valor = grandeza("CORRENTE ELÉTRICA(AMPERES)","amperes")
         linha()
         if valor[0] == "S" and valor[1] == "S":
-
+            vo = pergunta("Volts")
+            re = pergunta("Ohms")
+            formula("A","V","/","R",vo,re)
         elif valor[0] == "S" and valor[2] == "S":
-
+            po = pergunta("Watts")
+            vo = pergunta("Volts")
+            formula("A","P","/","V",po,vo)
         elif valor[1] == "S" and valor[2] == "S":
-            
+            re = pergunta("Ohms")
+            po = pergunta("Watts")
+            linha()
+            print("I = √P / R")
+            tempo(0.5)
+            print(f"V = √{po} / {re}")
+            tempo(0.5)
+            print(f"V = √{po/re}")
+            tempo(0.5)
+            print(f"V = {(po/re)**(1/2):.2f}")
+            linha()
+
+
 cabecalho("CONVERSÃO DE GRANDEZAS ELÉTRICAS")
 tempo(1)
 interface = layout("Tensão[Volts]", "Corrente[Amperes]","Resistência[Ohms]","Potência[Watts]")
