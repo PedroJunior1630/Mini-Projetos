@@ -122,10 +122,42 @@ def conversao(tipo):
             tempo(0.5)
             print(f"V = √{po} / {re}")
             tempo(0.5)
-            print(f"V = √{po/re}")
+            print(f"V = √{po/re:.2f}")
             tempo(0.5)
             print(f"V = {(po/re)**(1/2):.2f}")
             linha()
+    elif tipo == 3:
+        valor = grandeza("RESISTÊNCIA(OHMS)","resistencia")
+        if valor[0] == "S" and valor[1] == "S":
+            am = pergunta("Amperes")
+            vo = pergunta("Volts")
+            formula("R","V","/","A",vo,am)
+        elif valor[0] == "S" and valor[2] == "S":
+            am = pergunta("Amperes")
+            po = pergunta("Watts")
+            linha()
+            print("R = P / I²")
+            tempo(0.5)
+            print(f"R = {po} / {am}²")
+            tempo(0.5)
+            print(f"R = {po} / {am**2}")
+            tempo(0.5)
+            print(f"R = {po/am:.2f}")
+            linha()
+        elif valor[1] == "S" and valor[2] == "S":
+            vo = pergunta("Volts")
+            po = pergunta("Watts")
+            linha()
+            print("R = V² / P")
+            tempo(0.5)
+            print(f"R = {vo}² / {po}")
+            tempo(0.5)
+            print(f"R = {vo**2} / {po}")
+            tempo(0.5)
+            print(f"R = {vo/po:.2f}")
+            linha()
+    elif tipo == 4:
+        pass
 
 
 cabecalho("CONVERSÃO DE GRANDEZAS ELÉTRICAS")
