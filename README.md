@@ -11,5 +11,6 @@
  7. Calculos de Energia(Lei de Ohm)
  8. Sistema De Votação
  9. Trigonometria(Hipotenusa)
+ 10. Calculadora de Fatorial(com bônus)
  ----
  - [x] Todos os projetos foram feitos em python.
